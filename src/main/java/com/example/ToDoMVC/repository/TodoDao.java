@@ -1,6 +1,6 @@
 package com.example.ToDoMVC.repository;
 
-import com.example.ToDoMVC.services.models.Todo;
+import com.example.ToDoMVC.models.Todo;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -25,5 +25,28 @@ public class TodoDao {
     public boolean save(Todo todo){
         todoList.add(todo);
         return true;
+    }
+
+    public boolean remove(Todo todo) {
+        todoList.remove(todo);
+        return true;
+    }
+
+    public boolean update(String id, boolean status){
+       boolean updateStatus = false;
+        for(Todo todo : todoList){
+            if (todo.getId().equals(id)){
+                //remove original
+                remove(todo);
+
+                //change this todo now
+                todo.setTodoStatus(status);
+
+                //add this new todo
+                save(todo);
+                return true;
+            }
+        }
+        return false;
     }
 }

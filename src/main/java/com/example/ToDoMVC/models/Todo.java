@@ -1,4 +1,4 @@
-package com.example.ToDoMVC.services.models;
+package com.example.ToDoMVC.models;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
